@@ -1,4 +1,4 @@
-![화면 기록 2025-02-03 오전 11 48 41](https://github.com/user-attachments/assets/8d07b03f-a9cf-47f2-a125-3246137d57f3)# 🖥️ Desktop 제작 프로그램 
+# 🖥️ Desktop 제작 프로그램 
 ## 개요
 Desktop 프로그램은 사용자가 PC를 조립하기 위해 필요한 부품들을 선택하고 호환성을 검사하는 프로그램입니다.
 
