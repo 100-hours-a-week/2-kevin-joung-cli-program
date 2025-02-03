@@ -49,7 +49,7 @@ public class Main {
             }
             return true;
         });
-        System.out.println(pcBuilder.calcTotalWattage());
+
         payForDesktop();
     }
 
@@ -59,8 +59,8 @@ public class Main {
             Predicate<T> predicate
     ) {
         System.out.println("=====================================");
-        System.out.printf("=     원하는 %s의 번호를 입력해주세요!    =%n", title);
-        System.out.println("=      0을 눌러 프로그램을 종료합니다.     =");
+        System.out.printf("  - 원하는 %s의 번호를 입력해주세요!    %n", title);
+        System.out.println("  - 0을 눌러 프로그램을 종료합니다.     ");
         System.out.println("=====================================");
         for (int i=0; i<componentList.size(); i++) {
             System.out.println(i+1 + ". " + componentList.get(i).getInfo());
@@ -88,12 +88,12 @@ public class Main {
     }
 
     private void payForDesktop() {
-        System.out.println("========================================================");
-        System.out.println("                          영수증                         ");
+        System.out.println("========================================================================");
+        System.out.println("                                  영수증                                 ");
         for (Component component : pcBuilder.components) {
             System.out.println(component.getInfo());
         }
-        System.out.println("========================================================");
+        System.out.println("========================================================================");
 
         System.out.println("=====================================");
         System.out.printf("=        총 합:  %,d원         =\n", pcBuilder.calcTotalPrice() );
