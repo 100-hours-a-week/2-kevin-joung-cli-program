@@ -12,7 +12,12 @@ public class PCBuilder {
     }
 
     CPU getCurrentCPU() {
-        return (CPU) components.getFirst();
+        for (Component component : components) {
+            if (component instanceof CPU) {
+                return (CPU) component;
+            }
+        }
+        return null;
     }
 
     int calcTotalWattage() {
