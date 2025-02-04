@@ -1,6 +1,7 @@
 import component.CPU;
 import component.Component;
 import component.Mainboard;
+import constants.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -9,7 +10,6 @@ import java.util.Scanner;
 import java.util.function.Predicate;
 
 public class Main {
-    String errorMsg = "올바른 번호를 입력하세요!";
     Scanner sc = new Scanner(System.in);
     PCBuilder pcBuilder = new PCBuilder();
     Shop shop = new Shop();
@@ -44,7 +44,7 @@ public class Main {
         sellComponent("PowerSupply", shop.powerSupplyList, powerSupply -> {
             int totalWattage = pcBuilder.calcTotalWattage();
             if (totalWattage > powerSupply.wattage) {
-                System.out.println("파워 요구량이 부족합니다! 다시 선택해주세요.");
+                System.out.println(ErrorMessage.LACK_WATTAGE.getMessage());
                 System.out.printf("현재 PC의 전력 요구량: %d, 선택하신 파워의 전력: %d\n", totalWattage, powerSupply.wattage);
                 return false;
             }
@@ -80,10 +80,10 @@ public class Main {
                         break;
                     }
                 } else {
-                    System.out.println(errorMsg);
+                    System.out.println(ErrorMessage.WRONG_NUMBER.getMessage());
                 }
             } catch (InputMismatchException e) {
-                System.out.println(errorMsg);
+                System.out.println(ErrorMessage.WRONG_NUMBER.getMessage());
                 // 버퍼에서 잘못 입력된 데이터 제거
                 sc.nextLine();
             }
