@@ -3,6 +3,7 @@ import component.Component;
 import component.Mainboard;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
@@ -81,8 +82,10 @@ public class Main {
                 } else {
                     System.out.println(errorMsg);
                 }
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException e) {
                 System.out.println(errorMsg);
+                // 버퍼에서 잘못 입력된 데이터 제거
+                sc.nextLine();
             }
         }
     }
