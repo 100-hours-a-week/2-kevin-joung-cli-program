@@ -1,3 +1,4 @@
+import battle.PriceBattle;
 import component.CPU;
 import component.Component;
 import component.Mainboard;
@@ -13,6 +14,7 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     PCBuilder pcBuilder = new PCBuilder();
     Shop shop = new Shop();
+    PriceBattle priceBattle = new PriceBattle();
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -40,6 +42,11 @@ public class Main {
         });
         sellComponent("RAM", shop.ramList, null);
         sellComponent("GPU", shop.gpuList, null);
+
+        // 싸움 이벤트 발생!
+        Component newComponent = priceBattle.startBattle(pcBuilder.components.removeLast());
+        pcBuilder.components.add(newComponent);
+
         sellComponent("Storage", shop.storageList, null);
         sellComponent("PowerSupply", shop.powerSupplyList, powerSupply -> {
             int totalWattage = pcBuilder.calcTotalWattage();
