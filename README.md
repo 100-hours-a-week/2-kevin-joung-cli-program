@@ -46,4 +46,7 @@ src/
 
 ## 프로그램 시연
 ![화면 기록 2025-02-03 오전 11 48 41](https://github.com/user-attachments/assets/39cbdeca-8875-43f6-8439-a76c928f273d)
+배틀 이벤트 발생   
+![화면 기록 2025-02-05 오후 7 06 57](https://github.com/user-attachments/assets/3899e79d-3d6e-4113-8710-98c804fa0e6e)
+
 
