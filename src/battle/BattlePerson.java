@@ -62,9 +62,9 @@ public class BattlePerson extends Thread {
     private void receiveDamage(int damage) {
         this.hp -= damage;
         if (this.hp <= 0) {
-            System.out.println(name + "은 " + damage + "데미지의 공격을 받았다! 남은 hp가 없다...");
+            System.out.println(name + "은(는) " + damage + "데미지의 공격을 받았다! 남은 hp가 없다...");
         } else {
-            System.out.println(name + "은 " + damage + "데미지의 공격을 받았다! 남은 체력: " + this.hp);
+            System.out.println(name + "은(는) " + damage + "데미지의 공격을 받았다! 남은 체력: " + this.hp);
         }
         System.out.println("==============================");
     }
