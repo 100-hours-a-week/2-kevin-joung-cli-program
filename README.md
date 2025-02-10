@@ -16,24 +16,26 @@ src/
 ㄴ constants/
   ㄴ ErrorMessage
 ㄴ controller/
-    ㄴ ShopController
+  ㄴ ShopController
+ㄴ dto/
+  ㄴ BattleResultDTO
 ㄴ model/
-    ㄴ component/
-      ㄴ Component
-      ㄴ CPU
-      ㄴ Mainboard
-      ㄴ RAM
-      ㄴ GPU
-      ㄴ PowerSupply
-      ㄴ storage/
-        ㄴ HDD
-        ㄴ SDD
-    ㄴ Person
+  ㄴ component/
+    ㄴ Component
+    ㄴ CPU
+    ㄴ Mainboard
+    ㄴ RAM
+    ㄴ GPU
+    ㄴ PowerSupply
+    ㄴ storage/
+      ㄴ HDD
+      ㄴ SDD
+  ㄴ Person
 ㄴ Repository
-    ㄴ ShopRepository
+  ㄴ ShopRepository
 ㄴ Service
-    ㄴ BattleService
-    ㄴ ShopService
+  ㄴ BattleService
+  ㄴ ShopService
 ㄴ Main
 ```
 
@@ -50,6 +52,8 @@ src/
   - 로직을 담당하는 계층입니다.
 - Repository
   - 데이터 저장 및 조회를 담당하는 계층입니다.
+- DTO
+  - 계층 간 데이터 전달을 위한 데이터 모델을 정의한 계층입니다.
 
 ## 유저 시나리오
 1. 온보딩
