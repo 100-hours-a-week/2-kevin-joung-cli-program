@@ -14,6 +14,11 @@ src/
 ㄴ Main
 ㄴ PCBuilder
 ㄴ Shop
+ㄴ constants/
+  ㄴ ErrorMessage
+ㄴ battle/
+  ㄴ BattlePerson
+  ㄴ PriceBattle
 ㄴ component/
   ㄴ Component
   ㄴ CPU
