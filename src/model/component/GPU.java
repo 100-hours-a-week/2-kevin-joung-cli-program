@@ -1,4 +1,4 @@
-package component;
+package model.component;
 
 public class GPU extends Component {
     int memory;

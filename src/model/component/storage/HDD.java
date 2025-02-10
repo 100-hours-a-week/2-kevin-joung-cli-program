@@ -1,4 +1,4 @@
-package component.storage;
+package model.component.storage;
 
 public class HDD extends Storage {
     int RPM;

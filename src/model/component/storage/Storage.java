@@ -1,6 +1,6 @@
-package component.storage;
+package model.component.storage;
 
-import component.Component;
+import model.component.Component;
 
 public abstract class Storage extends Component {
     int memory;

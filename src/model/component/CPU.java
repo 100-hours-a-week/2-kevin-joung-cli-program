@@ -1,4 +1,4 @@
-package component;
+package model.component;
 
 public class CPU extends Component {
     public String socketType;

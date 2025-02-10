@@ -1,18 +1,18 @@
-package battle;
+package model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class BattlePerson extends Thread {
+public class Person extends Thread {
     public String name;
     public int hp;
-    private BattlePerson enemy;
+    private Person enemy;
 
-    BattlePerson(String name, int hp) {
+    public Person(String name, int hp) {
         this.name = name;
         this.hp = hp;
     }
 
-    public void setEnemy(BattlePerson enemy) {
+    public void setEnemy(Person enemy) {
         this.enemy = enemy;
     }
 

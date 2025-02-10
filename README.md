@@ -19,7 +19,7 @@ src/
 ㄴ battle/
   ㄴ BattlePerson
   ㄴ PriceBattle
-ㄴ component/
+ㄴ model.component/
   ㄴ Component
   ㄴ CPU
   ㄴ Mainboard

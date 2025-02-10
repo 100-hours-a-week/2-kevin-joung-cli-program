@@ -1,10 +1,11 @@
-package battle;
+package service;
 
-import component.Component;
+import model.Person;
+import model.component.Component;
 
-public class PriceBattle {
-    BattlePerson seller = new BattlePerson("용팔이", 100);
-    BattlePerson customer = new BattlePerson("케빈", 100);
+public class BattleService {
+    Person seller = new Person("용팔이", 100);
+    Person customer = new Person("케빈", 100);
 
     public Component startBattle(Component selectedComponent) {
         System.out.println("======= 싸움 이벤트 발생 =======");

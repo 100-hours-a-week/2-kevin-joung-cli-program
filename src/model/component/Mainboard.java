@@ -1,6 +1,4 @@
-package component;
-
-import java.util.List;
+package model.component;
 
 public class Mainboard extends Component{
     String socketType;

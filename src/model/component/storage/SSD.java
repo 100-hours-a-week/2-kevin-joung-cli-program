@@ -1,4 +1,4 @@
-package component.storage;
+package model.component.storage;
 
 public class SSD extends Storage {
     String socketType;

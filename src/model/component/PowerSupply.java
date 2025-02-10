@@ -1,4 +1,4 @@
-package component;
+package model.component;
 
 public class PowerSupply extends Component {
     public int wattage;
