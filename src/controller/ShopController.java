@@ -1,11 +1,14 @@
 package controller;
 
+import dto.BattleResultDTO;
+import model.Person;
 import model.component.CPU;
 import model.component.Component;
 import model.component.Mainboard;
 import model.component.PowerSupply;
 import service.BattleService;
 import service.ShopService;
+import view.BattleView;
 import view.ShopView;
 
 import java.util.ArrayList;
@@ -14,12 +17,20 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class ShopController {
-    private ShopView shopView = new ShopView();
-    private ShopService shopService = new ShopService();
-    private BattleService battleService = new BattleService();
+    private final ShopView shopView = new ShopView();
+    private final BattleView battleView = new BattleView();
+    private final ShopService shopService = new ShopService();
+    private final BattleService battleService;
 
+    // 배틀을 수행할 Person
+    private final Person seller = new Person("용팔이", 100, false);
+    private final Person customer = new Person("케빈", 100, true);
     // 선택한 컴포넌트들 저장
     private ArrayList<Component> components = new ArrayList<>();
+
+    public ShopController() {
+        battleService = new BattleService(seller, customer);
+    }
 
     public void start() {
         shopView.printIntro();
@@ -29,7 +40,7 @@ public class ShopController {
         selectComponent("GPU", shopService.getGPUList(), null);
 
         // 싸움이벤트 발생
-        Component selectedComponent = battleService.startBattle(components.removeLast());
+        Component selectedComponent = startBattle(components.removeLast());
         components.add(selectedComponent);
 
         selectComponent("Storage", shopService.getStorageList(), null);
@@ -105,5 +116,13 @@ public class ShopController {
             return false;
         }
         return true;
+    }
+
+    // 배틀 이벤트
+    private Component startBattle(Component component) {
+        battleView.printIntro(seller.name, customer.name);
+        BattleResultDTO battleResult = battleService.startBattle(component);
+        battleView.printBattleResult(battleResult);
+        return battleResult.getComponent();
     }
 }

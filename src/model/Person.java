@@ -6,10 +6,12 @@ public class Person extends Thread {
     public String name;
     public int hp;
     private Person enemy;
+    public final boolean isCustomer;
 
-    public Person(String name, int hp) {
+    public Person(String name, int hp, boolean isCustomer) {
         this.name = name;
         this.hp = hp;
+        this.isCustomer = isCustomer;
     }
 
     public void setEnemy(Person enemy) {

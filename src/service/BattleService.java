@@ -1,17 +1,19 @@
 package service;
 
+import dto.BattleResultDTO;
 import model.Person;
 import model.component.Component;
 
 public class BattleService {
-    Person seller = new Person("용팔이", 100);
-    Person customer = new Person("케빈", 100);
+    Person seller;
+    Person customer;
 
-    public Component startBattle(Component selectedComponent) {
-        System.out.println("======= 싸움 이벤트 발생 =======");
-        System.out.println(seller.name + "가 " + customer.name + "에게 시비를 걸어온다...");
-        System.out.println(seller.name + ": 너가 이기면 10% 할인을, 내가 이기면 10%의 가격 인상을 부여한다!");
+    public BattleService(Person seller, Person customer) {
+        this.seller = seller;
+        this.customer = customer;
+    }
 
+    public BattleResultDTO startBattle(Component selectedComponent) {
         seller.setEnemy(customer);
         customer.setEnemy(seller);
 
@@ -25,20 +27,14 @@ public class BattleService {
             e.printStackTrace();
         }
 
+        BattleResultDTO battleResult;
         if (seller.hp > 0) {
-            System.out.println(seller.name + "의 승리로 가격이 10% 인상됐습니다.");
-            System.out.printf("%,d원", selectedComponent.price);
-            selectedComponent.price *= 1.1;
-            System.out.printf(" -> %,d원\n", selectedComponent.price);
-            return selectedComponent;
-        } else if (customer.hp > 0) {
-            System.out.println(customer.name + "의 승리로 가격이 10% 인하됐습니다.");
-            System.out.printf("%,d원", selectedComponent.price);
-            selectedComponent.price *= 0.9;
-            System.out.printf(" -> %,d원\n", selectedComponent.price);
-            return selectedComponent;
+            battleResult = new BattleResultDTO(selectedComponent, seller);
         } else {
-            return selectedComponent;
+            battleResult = new BattleResultDTO(selectedComponent, customer);
         }
+        battleResult.updateComponentPriceWithWinner();
+
+        return battleResult;
     }
 }
