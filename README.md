@@ -1,6 +1,8 @@
 # 🖥️ Desktop 제작 프로그램 
 ## 개요
-Desktop 프로그램은 사용자가 PC를 조립하기 위해 필요한 부품들을 선택하고 호환성을 검사하는 프로그램입니다.
+이 프로젝트는 사용자가 PC를 조립하기 위해 필요한 부품들을 선택하고 호환성을 검사하는 CLI 프로그램입니다.   
+또한, 구매 중간 배틀 이벤트를 통하여 가격이 조정되는 이벤트 기능이 있습니다.   
+레이어드 아키텍처를 적용하여, 유지보수성과 확장성을 고려한 설계를 기반으로 개발되었습니다.
 
 ## 주요 기능
 - CPU와 메인보드 호환성 검사
@@ -11,32 +13,43 @@ Desktop 프로그램은 사용자가 PC를 조립하기 위해 필요한 부품�
 ## 프로젝트 구조
 ```
 src/
-ㄴ Main
-ㄴ PCBuilder
-ㄴ Shop
 ㄴ constants/
   ㄴ ErrorMessage
-ㄴ battle/
-  ㄴ BattlePerson
-  ㄴ PriceBattle
-ㄴ model.component/
-  ㄴ Component
-  ㄴ CPU
-  ㄴ Mainboard
-  ㄴ RAM
-  ㄴ GPU
-  ㄴ PowerSupply
-  ㄴ storage/
-    ㄴ HDD
-    ㄴ SDD
+ㄴ controller/
+    ㄴ ShopController
+ㄴ model/
+    ㄴ component/
+      ㄴ Component
+      ㄴ CPU
+      ㄴ Mainboard
+      ㄴ RAM
+      ㄴ GPU
+      ㄴ PowerSupply
+      ㄴ storage/
+        ㄴ HDD
+        ㄴ SDD
+    ㄴ Person
+ㄴ Repository
+    ㄴ ShopRepository
+ㄴ Service
+    ㄴ BattleService
+    ㄴ ShopService
+ㄴ Main
 ```
 
-## 클래스 구조
-![스크린샷 2025-02-03 오전 11 25 52](https://github.com/user-attachments/assets/1eb51e3f-53f2-4fe1-8958-e417d5b7a168)
+## 계층 별 역할
 
-- Component와 그 하위 클래스: 부품을 위한 class입니다.
-- PCBuilder: 현재까지 구매한 부품들의 상태를 저장합니다.
-- Shop: 판매할 부품들의 리스트를 저장합니다.
+- Model
+  - 프로그램 내에서 사용되는 데이터 모델을 정의한 계층입니다.
+- View
+  - 사용자의 입출력을 처리하는 계층입니다.
+- Controller
+  - 기능의 흐름을 담당하는 계층입니다.
+  - View를 통해 유저의 input/output을 받고, Service계층의 로직을 호출합니다.
+- Service
+  - 로직을 담당하는 계층입니다.
+- Repository
+  - 데이터 저장 및 조회를 담당하는 계층입니다.
 
 ## 유저 시나리오
 1. 온보딩
