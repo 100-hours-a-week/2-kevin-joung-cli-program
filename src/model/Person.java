@@ -7,11 +7,13 @@ public class Person extends Thread {
     public int hp;
     private Person enemy;
     public final boolean isCustomer;
+    private final Object lock;
 
-    public Person(String name, int hp, boolean isCustomer) {
+    public Person(String name, int hp, boolean isCustomer, Object lock) {
         this.name = name;
         this.hp = hp;
         this.isCustomer = isCustomer;
+        this.lock = lock;
     }
 
     public void setEnemy(Person enemy) {
@@ -24,11 +26,28 @@ public class Person extends Thread {
             System.out.println("Error: 상대가 지정이 안됐습니다.");
             return;
         }
-
         while (this.hp > 0 && enemy.hp > 0) {
-            int damage = attack();
-            if (damage > 0) {
-                enemy.receiveDamage(damage);
+            synchronized (lock) {
+                int damage = attack();
+                if (damage > 0) {
+                    enemy.receiveDamage(damage);
+
+                    // 상대가 쓰러졌으면 종료
+                    if (enemy.hp <= 0) {
+                        lock.notifyAll();
+                        break;
+                    }
+
+                    // 락을 해제하고 대기
+                    try {
+                        lock.notify();
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    lock.notifyAll();
+                }
             }
         }
     }

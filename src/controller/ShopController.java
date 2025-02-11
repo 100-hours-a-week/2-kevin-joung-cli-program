@@ -23,8 +23,9 @@ public class ShopController {
     private final BattleService battleService;
 
     // 배틀을 수행할 Person
-    private final Person seller = new Person("용팔이", 100, false);
-    private final Person customer = new Person("케빈", 100, true);
+    private final Object lock = new Object();
+    private final Person seller = new Person("용팔이", 100, false, lock);
+    private final Person customer = new Person("케빈", 100, true, lock);
     // 선택한 컴포넌트들 저장
     private ArrayList<Component> components = new ArrayList<>();
 

@@ -14,7 +14,7 @@ public class BattleView {
             System.out.println(battleResult.getWinner().name + "의 승리로 가격이 10% 인하됐습니다.");
             System.out.printf("할인 후 가격: %,d원\n", battleResult.getComponent().price);
         } else {
-            System.out.println(battleResult.getWinner().getName() + "의 승리로 가격이 10% 인상됐습니다.");
+            System.out.println(battleResult.getWinner().name + "의 승리로 가격이 10% 인상됐습니다.");
             System.out.printf("인상 후 가격: %,d원\n", battleResult.getComponent().price);
         }
     }
