@@ -19,12 +19,4 @@ public class BattleResultDTO {
     public Component getComponent() {
         return component;
     }
-
-    public void updateComponentPriceWithWinner() {
-        if (winner.isCustomer) {
-            component.price *= 0.9;
-        } else {
-            component.price *= 1.1;
-        }
-    }
 }

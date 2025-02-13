@@ -29,12 +29,23 @@ public class BattleService {
 
         BattleResultDTO battleResult;
         if (seller.hp > 0) {
-            battleResult = new BattleResultDTO(selectedComponent, seller);
+            Component component = updateComponentPriceWithWinner(selectedComponent, seller);
+            battleResult = new BattleResultDTO(component, seller);
         } else {
-            battleResult = new BattleResultDTO(selectedComponent, customer);
+            Component component = updateComponentPriceWithWinner(selectedComponent, customer);
+            battleResult = new BattleResultDTO(component, customer);
         }
-        battleResult.updateComponentPriceWithWinner();
 
         return battleResult;
+    }
+
+    private Component updateComponentPriceWithWinner(Component component, Person winner) {
+        if (winner.isCustomer) {
+            component.price *= 0.9;
+        } else {
+            component.price *= 1.1;
+        }
+
+        return component;
     }
 }
